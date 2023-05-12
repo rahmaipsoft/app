@@ -1,6 +1,7 @@
 
-
-
+<?php
+// include_once('./variables.php');
+?>
 
 <?php session_start();?>
 <!DOCTYPE html>
@@ -23,54 +24,72 @@
 
     <?php include_once 'footer.php';?>
     <!-- </div> -->
-    
-  
    <?php
-   $sth = $mysqlClient->prepare("SELECT * FROM recipes");
-   $sth->execute();
-   
-   /* Fetch all of the remaining rows in the result set */
-   
-   $result = $sth->fetchAll();
+$sth = $mysqlClient->prepare("SELECT * FROM recipes");
+$sth->execute();
+
+/* Fetch all of the remaining rows in the result set */
+
+$result = $sth->fetchAll();
 //    print_r($result);
-    foreach ($result as $key => $value) {  ?>
-       
+foreach ($result as $key => $value) {?>
+
+
+
         <table class="table">
   <thead>
     <tr>
+    <th scope="col">id</th>
       <th scope="col">title</th>
       <th scope="col">recipe</th>
       <th scope="col">author</th>
       <th scope="col">is_enabled</th>
-      <th scope="col">action</th>
-     
+      <th scope="col">  action  </th>
+
     </tr>
   </thead>
   <tbody>
     <tr>
       <!-- <th scope="row">1</th> -->
-      <td> <?php  echo"$value[title]" ?>  </td>
-      <td>   <?php  echo"$value[recipe]" ?> </td>
-      <td> <?php  echo"$value[author]" ?></td>
-      <td> <?php  echo"$value[is_enabled]" ?></td>
-      <td> <?php  echo"*****" ?></td>
-     
+      <td> <?php echo "$value[recipe_id]" ?>  </td>
+      <td> <?php echo "$value[title]" ?>  </td>
+      <td>   <?php echo "$value[recipe]" ?> </td>
+      <td> <?php echo "$value[author]" ?></td>
+      <td> <?php echo "$value[is_enabled]" ?></td>
+
+      <!-- <td> <div >   <a href="<?php echo ($rootUrl) . 'app/recipes/delete.php?id=' . ("$value[recipe_id]"); ?>"> <?php echo '<i class="fa-solid fa-trash-can"></i>' ?></a> </div>
+      <div>  <?php echo '<i class="fa-sharp fa-regular fa-pen-to-square"></i>' ?></div> -->
+
+      <td>
+      <ul class="list-group list-group-horizontal">
+                     
+        <li class="list-group-item"><a class="link-danger" href="./../app/recipes/delete.php?id=<?php echo($value['recipe_id']); ?>">Supprimer l'article <i class="fa-solid fa-trash-can"></i></a></li>
+       <li class="list-group-item"><a class="link-warning" href="./../app/recipes/update.php?id=<?php echo($value['recipe_id']); ?>">Editer l'article <i class="fa-sharp fa-regular fa-pen-to-square"></i></a></li>
+        </ul>
+      </td>
+
+
+    </td>
+
     </tr>
-    
-    
+
+
   </tbody>
 </table>
 
-<?php  }?>
-    
+<?php }?>
 
 
 
 
 
-  
 
 
+  <!-- integration fontawesome -->
+  <script src="https://kit.fontawesome.com/13a9e721bb.js" crossorigin="anonymous"></script>
+       <!-- integration booststrap -->
     <script src="dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+
 </body>
 </html>
