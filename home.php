@@ -22,7 +22,7 @@
     <?php include_once 'header.php';?>
       <img src="https://creer-un-site.com/wp-content/uploads/2015/08/theme-wordpress-culinier-recette.jpg" alt="">
 
-    <?php include_once 'footer.php';?>
+    
     <!-- </div> -->
    <?php
 $sth = $mysqlClient->prepare("SELECT * FROM recipes");
@@ -62,9 +62,9 @@ foreach ($result as $key => $value) {?>
 
       <td>
       <ul class="list-group list-group-horizontal">
-                     
-        <li class="list-group-item"><a class="link-danger" href="./../app/recipes/delete.php?id=<?php echo($value['recipe_id']); ?>">Supprimer l'article <i class="fa-solid fa-trash-can"></i></a></li>
-       <li class="list-group-item"><a class="link-warning" href="./../app/recipes/update.php?id=<?php echo($value['recipe_id']); ?>">Editer l'article <i class="fa-sharp fa-regular fa-pen-to-square"></i></a></li>
+
+        <li class="list-group-item"><a class="link-danger" href="./../app/recipes/delete.php?id=<?php echo ($value['recipe_id']); ?>">Supprimer l'article <i class="fa-solid fa-trash-can"></i></a></li>
+       <li class="list-group-item"><a class="link-warning" href="./../app/recipes/update.php?id=<?php echo ($value['recipe_id']); ?>">Editer l'article <i class="fa-sharp fa-regular fa-pen-to-square"></i></a></li>
         </ul>
       </td>
 
@@ -76,20 +76,14 @@ foreach ($result as $key => $value) {?>
 
   </tbody>
 </table>
-
 <?php }?>
 
-
-
-
-
-
+<?php include_once 'footer.php';?>
 
   <!-- integration fontawesome -->
   <script src="https://kit.fontawesome.com/13a9e721bb.js" crossorigin="anonymous"></script>
        <!-- integration booststrap -->
     <script src="dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-
 
 </body>
 </html>
