@@ -46,7 +46,7 @@ if (isset($_COOKIE['LOGGED_USER']) || isset($_SESSION['LOGGED_USER'])) {
 ?>
 
 <?php if (!isset($loggedUser)): ?>
-<form action="home.php" method="post">
+<form action="home.php" method="post" class="container-fluid mt-5" style="width: 25rem" >
     <?php if (isset($errorMessage)): ?>
         <div class="alert alert-danger" role="alert">
             <?php echo ($errorMessage); ?>
